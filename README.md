@@ -72,31 +72,32 @@ _
  _The URLs for the local servers hosting the API are https://localhost:5000 or https://localhost:5001_
 
 #### HTTP Request Link Structure
-
+```
 GET /api/animals
 POST /api/animals
 GET /api/animals/{id}
 PUT /api/animals/{id}
 DELETE /api/animals/{id}
-
+```
 #### Return Codes
+```
 GET requests should return a "200 ok" when successful.
 POST requests should return a "201" when successful.
 PUT and DELETE requests should return "204" when successful.
 _Other codes may indicate that the request was written incorrectly. So please double check your request if that happens_
-
+```
 #### Sample Query
 https://localhost:5001/api/animals/2
 
 #### Sample JSON Response
-
+```
 {
   "animalId": 1,
   "name": "Soju",
   "species": "Cat",
   "age": 3,
 }
-
+```
 
 ## Known Bugs
 
