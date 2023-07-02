@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace AnimalShelterAPI.Models
 {
   public class Animal
@@ -11,6 +13,5 @@ namespace AnimalShelterAPI.Models
     [Required]
     [Range(0, 30, ErrorMessage = "Age must be between 0 and 30.")]
     public int Age { get; set; }
-  }
   }
 }
