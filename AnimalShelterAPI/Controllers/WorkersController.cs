@@ -13,11 +13,11 @@ namespace AnimalShelterAPI.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [ApiVersion("2.0")]
-    public class WorkerController : ControllerBase
+    public class WorkersController : ControllerBase
     {
         private readonly AnimalShelterAPIContext _context;
 
-        public WorkerController(AnimalShelterAPIContext context)
+        public WorkersController(AnimalShelterAPIContext context)
         {
             _context = context;
         }
