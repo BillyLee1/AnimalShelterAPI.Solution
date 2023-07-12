@@ -13,47 +13,47 @@ namespace AnimalShelterAPI.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [ApiVersion("2.0")]
-    public class AnimalsController : ControllerBase
+    public class WorkerController : ControllerBase
     {
         private readonly AnimalShelterAPIContext _context;
 
-        public AnimalsController(AnimalShelterAPIContext context)
+        public WorkerController(AnimalShelterAPIContext context)
         {
             _context = context;
         }
 
-        // GET: api/Animals
+        // GET: api/Workers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Animal>>> GetAnimals()
+        public async Task<ActionResult<IEnumerable<Worker>>> GetWorkers()
         {
-            return await _context.Animals.ToListAsync();
+            return await _context.Workers.ToListAsync();
         }
 
-        // GET: api/Animals/5
+        // GET: api/Workers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Animal>> GetAnimal(int id)
+        public async Task<ActionResult<Worker>> GetWorker(int id)
         {
-            var animal = await _context.Animals.FindAsync(id);
+            var worker = await _context.Workers.FindAsync(id);
 
-            if (animal == null)
+            if (worker == null)
             {
                 return NotFound();
             }
 
-            return animal;
+            return worker;
         }
 
-        // PUT: api/Animals/5
+        // PUT: api/Workers/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAnimal(int id, Animal animal)
+        public async Task<IActionResult> PutWorker(int id, Worker worker)
         {
-            if (id != animal.AnimalId)
+            if (id != worker.WorkerId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(animal).State = EntityState.Modified;
+            _context.Entry(worker).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace AnimalShelterAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AnimalExists(id))
+                if (!WorkerExists(id))
                 {
                     return NotFound();
                 }
@@ -74,36 +74,36 @@ namespace AnimalShelterAPI.Controllers
             return NoContent();
         }    
 
-        // POST: api/Animals
+        // POST: api/Workers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Animal>> PostAnimal(Animal animal)
+        public async Task<ActionResult<Worker>> PostWorker(Worker worker)
         {
-            _context.Animals.Add(animal);
+            _context.Workers.Add(worker);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAnimal", new { id = animal.AnimalId }, animal);
+            return CreatedAtAction("GetWorker", new { id = worker.WorkerId }, worker);
         }
 
-        // DELETE: api/Animals/5
+        // DELETE: api/Workers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAnimal(int id)
+        public async Task<IActionResult> DeleteWorker(int id)
         {
-            var animal = await _context.Animals.FindAsync(id);
-            if (animal == null)
+            var worker = await _context.Workers.FindAsync(id);
+            if (worker == null)
             {
                 return NotFound();
             }
 
-            _context.Animals.Remove(animal);
+            _context.Workers.Remove(worker);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool AnimalExists(int id)
+        private bool WorkerExists(int id)
         {
-            return _context.Animals.Any(e => e.AnimalId == id);
+            return _context.Workers.Any(e => e.WorkerId == id);
         }
     }
 }
