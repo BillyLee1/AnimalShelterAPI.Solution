@@ -18,7 +18,7 @@
 
 ## Description
 
-_A simple API to look up, add, edit, or delete cats and dogs from an animal shelter. Each entity has an ID, age, species, and name._
+_A simple API to look up, add, edit, or delete cats and dogs from an animal shelter. Each entity has an ID, age, species, and name. Version 2 contains workers information. There you can also add, edit, or delete workers. Each entity also has an ID, age, role, and name._
 
 ## Setup/Installation Requirements
 * _Follow the steps below_
@@ -53,7 +53,7 @@ _A simple API to look up, add, edit, or delete cats and dogs from an animal shel
     "DefaultConnection": "Server=localhost;Port=3306;database=animalshelter_api;uid=[YOUR USERNAME];pwd=[YOUR PASSWORD];"
   }
 }
-_
+
 
 
 #### To add a migration and development server:_
@@ -73,11 +73,13 @@ _
 
 #### HTTP Request Link Structure
 ```
-GET /api/animals
-POST /api/animals
-GET /api/animals/{id}
-PUT /api/animals/{id}
-DELETE /api/animals/{id}
+Version: Animals or Workers
+
+GET /api/{version}
+POST /api/{version}
+GET /api/{version}/{id}
+PUT /api/{version}/{id}
+DELETE /api/{version}/{id}
 ```
 #### Return Codes
 ```
@@ -86,18 +88,36 @@ POST requests should return a "201" when successful.
 PUT and DELETE requests should return "204" when successful.
 _Other codes may indicate that the request was written incorrectly. So please double check your request if that happens_
 ```
-#### Sample Query
+#### Sample Queries
 https://localhost:5001/api/animals/2
+https://localhost:5001/api/workers/2
 
 #### Sample JSON Response
 ```
+Version = animals:
 {
   "animalId": 1,
   "name": "Soju",
   "species": "Cat",
   "age": 3,
 }
+
+Version = workerss:
+{
+  "workerId": 1,
+  "name": "John",
+  "species": "Vet",
+  "age": 44,
+}
 ```
+
+### Versioning
+
+* _There are currently two different version, 1.0 and 2.0. Animals and Workers_
+
+* _Install dotnet add package Microsoft.AspNetCore.Mvc.Versioning_
+
+* _On the swagger page, you may select the version you would like to use on the top right corner of the webpage._
 
 ## Known Bugs
 
