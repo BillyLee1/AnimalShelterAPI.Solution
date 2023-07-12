@@ -102,7 +102,7 @@ Version = animals:
   "age": 3,
 }
 
-Version = workerss:
+Version = workers:
 {
   "workerId": 1,
   "name": "John",
